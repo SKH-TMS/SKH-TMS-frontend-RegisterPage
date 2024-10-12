@@ -1,4 +1,4 @@
-# Styling on base of given color-scheme and specifications
+# Creating Register Form (only frontend)
 
 You can use below link to know how to create this app
 
