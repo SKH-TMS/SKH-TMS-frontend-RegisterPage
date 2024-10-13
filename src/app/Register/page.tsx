@@ -7,24 +7,14 @@ export default function RegisterPage() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Frontend-only No actual registration functionality
-    if (password !== confirmPassword) {
-      alert("Passwords do not match");
-      return;
-    }
-    console.log("Registering with:", { name, email, password });
-  };
-
   return (
-    <div className="flex h-screen items-center justify-center bg-[#D2E8E3] ">
-      <div className="w-full max-w-md p-6 bg-[#ECFBF4]  rounded-lg shadow-2xl">
-        <form onSubmit={handleSubmit}>
-          <h2 className=" text-center text-gray-700 mb-6">Create Account</h2>
+    <div className="screenMiddleDiv">
+      <div className="formDiv">
+        <form>
+          <h2 className="text-center">Create Account</h2>
 
-          <div className="mb-4">
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+          <div>
+            <label htmlFor="name" className="formLabel">
               Full Name
             </label>
             <input
@@ -33,12 +23,11 @@ export default function RegisterPage() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black text-black"
             />
           </div>
 
-          <div className="mb-4">
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+          <div className="my-6">
+            <label htmlFor="email" className="formLabel">
               Email Address
             </label>
             <input
@@ -47,12 +36,11 @@ export default function RegisterPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black text-black"
             />
           </div>
 
-          <div className="mb-4">
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+          <div className="my-6">
+            <label htmlFor="password" className="formLabel">
               Password
             </label>
             <input
@@ -61,12 +49,11 @@ export default function RegisterPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black text-black"
             />
           </div>
 
-          <div className="mb-6">
-            <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
+          <div className="my-6">
+            <label htmlFor="confirmPassword" className="formLabel">
               Confirm Password
             </label>
             <input
@@ -75,20 +62,17 @@ export default function RegisterPage() {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black text-black"
             />
           </div>
 
-          <button
-            type="submit"
-            className="w-full py-2 px-4 bg-[#0F6466] text-white font-semibold rounded-lg hover:bg-[#2C3532] transition-colors"
-          >
+          <button type="submit" className="formButton">
             Register
           </button>
 
           <div className="text-center mt-4">
-            <a href="/login" className="text-sm text-gray-700 hover:underline">
-              Already have an account? Log in
+            Already have an account?
+            <a href="#">
+              <button className="buttonTiny">Login</button>
             </a>
           </div>
         </form>
