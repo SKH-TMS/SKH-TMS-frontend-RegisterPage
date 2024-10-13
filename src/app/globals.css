@@ -8,8 +8,11 @@ write below line in your editor setting.json, if unknown error exist for @tailwi
     "less.validate": false
 */
 :root {
-  --background: #D2E8E3;/*set according to color-scheme*/
-  --foreground: black;/*set according to color-scheme*/
+  --background: #D2E8E3;/*body-background, also-> navbar-link-color, button-text*/
+  --foreground: black;/*text over website*/
+  --button-color: #0F6466; /*also-> navbar-link-hover, form-input-focus, buttonTiny-hover*/
+  --form-color: #ECFBF4; /*form-background*/
+  --navbar-color: #2C3532; /*navbar-background, also-> button-hover, buttonTiny*/
 }
 
 @media (prefers-color-scheme: dark) {/*Not properly check*/
@@ -20,33 +23,37 @@ write below line in your editor setting.json, if unknown error exist for @tailwi
 }
 
 body {
-  color: var(--foreground);/*set according to color-scheme*/
-  background: var(--background);/*set according to color-scheme*/
+  color: var(--foreground);
+  background: var(--background);
   font-family: Verdana, sans-serif;
   font-weight: 200;
   font-size:15px;
   line-height:1.5;
 }
 nav{
-  background-color: #2C3532;/*set according to color-scheme*/
+  background-color: var(--navbar-color);/*set according to color-scheme*/
   padding: 0px;
 }
 nav a{
-  color: #D2E8E3;/*set according to color-scheme*/
+  color: var(--background);
   padding: 10px 20px;
   display: inline-block;
 }
 nav a:hover{
-  background-color: #0F6466;/*set according to color-scheme*/
+  background-color: var(--button-color);/*set according to color-scheme*/
+}
+button{@apply rounded-lg transition-colors;
+  background-color: var(--button-color); color: var(--background);}
+button:hover{
+  background-color: var(--navbar-color);
 }
 @layer utilities {
-  /* define your classes here*/
-  .myTextClass{
-    @apply text-yellow-700 bg-red-950 my-4 px-6
-  }
-  .myAnotherClass{
-    @apply font-mono hover:bg-black w-full
-  }
+  .screenMiddleDiv{@apply flex h-screen items-center justify-center}
+  .formDiv{@apply w-full max-w-md p-6 shadow-2xl rounded-lg; background-color: var(--form-color)}
+  .formLabel{@apply block text-sm font-medium text-gray-700}
+  .formButton{@apply w-full py-2 px-4}
+  .buttonTiny{@apply m-1 p-1 text-xs rounded-sm; background-color: var(--navbar-color);}
+  .buttonTiny:hover{background-color: var(--button-color);}
 }
 @layer base {
   h1 {font-size:36px;padding: 36px;}
@@ -55,4 +62,6 @@ nav a:hover{
   h4 {font-size:20px;padding: 20px;}
   h5 {font-size:18px;padding: 18px;}
   h6 {font-size:16px;padding: 16px;}
+  input{@apply text-black w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-0}
+  input:focus {border-color: var(--button-color);}
 }
